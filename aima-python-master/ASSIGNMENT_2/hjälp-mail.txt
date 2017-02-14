@@ -1,0 +1,20 @@
+Dear students,
+
+I had questions from two students on how to encode and read the data sets. The answer is: 
+1/ You have to encode the data sets using a documented format, either ARFF for the decision trees or libsvm for logistic regression.
+2/ For both formats, you will have to read some documentation and examples to understand the format syntax and write your own readers. Your readers do not need to cover all the format, but you must be able to read and load the data sets you are using.
+3/ The libsvm format is less intuitive than ARFF's. To understand it, I suggest you download the libsvm zip file (https://www.csie.ntu.edu.tw/~cjlin/libsvm/) and read the README file, section ''Installation and Data Format''. You can also find a complement here: http://stats.stackexchange.com/questions/61328/libsvm-data-format
+
+LINKS THAT WORK
+http://web.archive.org/web/20170110021348/http://www.csie.ntu.edu.tw/~cjlin/libsvm/
+http://web.archive.org/web/20160702081300/http://stats.stackexchange.com/questions/61328/libsvm-data-format
+
+You can find already implemented parsers for both ARFF and libsvm:
+1/ Weka has an implementation of an ARFF parser and packages are available in Python such as https://pypi.python.org/pypi/arff/0.9.
+2/ For libsvm, you have a reader in scikit learn: sklearn.datasets.load_svmlight_file. 
+These readers can serve as inspiration, but you have to write your own parsers. You can cannot reuse these packages.
+
+I hope this helps.
+Kindest regards,
+Pierre Nugues
+PS. There was a mistake in the deadline date that I corrected.
