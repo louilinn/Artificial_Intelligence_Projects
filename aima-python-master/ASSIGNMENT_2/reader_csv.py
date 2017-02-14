@@ -52,10 +52,12 @@ def dtl(examples,attributes,parent_examples,all_features):
         for attr_f in attr_features: # t.ex. ['alt=No', 'alt=Yes']
             example_attr_values = examples[:][index] # all values of current feature
             exs_with_attr_f = []                       # init
-            for i = 1:
-            val in example_A_values:             # each val
+            nbr_of_exs = example_attr_values.length
+            for i in range(1, bbr_of_exs):
+                val = example_attr_values[i]             # each val
                 if val in attr_f:
                     exc_with_attr_f.append[examples[i]]
+                    #end
                 
                 
             
