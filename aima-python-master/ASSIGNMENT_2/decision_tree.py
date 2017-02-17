@@ -14,43 +14,51 @@ class Node(object) :
         self.children = childs # array
         self.parent = par
         
-class Example(object):
+class Example(object): # kanske bättre med en dictionary key:index feature värde
     def __init__(self, index, features):
         self.index = index
         self.features = features
         
-def Convert(object):
-    def __init__(self, example, index):
-        self.ex = example
-        self.index = index
+def convert(example, index):
+    return Example(index, example)
 
 # building an (optimal) tree
-def decision_tree_learning(examples, attributes, parent_examples, all_features, classifications):
-    for i in range(0, examples.size):
-       examples[i] = Convert(examples[i], i)    
+def decision_tree_learning(examples, attributes, parent_examples, all_features, classifications): 
        
-    if examples.size == 0:
-        return plurality_value(parent_examples)
-    elif has_same_classification(examples, classifications):
-        return examples[0].value
-    elif attributes.isEmpty():
-        return plurality_value(examples)
-    else :
-        index = 0
-        attr = attributes[index] # attribut # replace with importance function
-        node = Node(None, examples, attr, [], None)
-        attr_features = []
-        for f in all_features:
-            if attr in f:
-                attr_features.append(f)
-        for attr_f in attr_features: # t.ex. ['alt=No', 'alt=Yes']
-            example_attr_values = examples[:][index] # all values of current feature
-            exs_with_attr_f = []                       # init
-            nbr_of_exs = example_attr_values.length
-            for i in range(1, nbr_of_exs):
-                val = example_attr_values[i]             # each val
-                if val in attr_f:
-                    exs_with_attr_f.append[examples[i]]
+       if examples.size == 0:
+           return plurality_value(parent_examples) # loop elements and put together parent_elements
+   
+       elif has_same_classification(examples, classifications):
+           index_for_one_example = examples[0].index
+           return classifications[index_for_one_example] 
+
+        elif attributes.isEmpty():
+            return plurality_value(examples)
+            
+        else :
+            index = 0
+            attr = attributes[index] # attribut # replace with importance function
+            node = Node(None, examples, attr, [], None)
+            feature_cols = []  # possible values
+            
+            for f in all_features:
+                if attr in f:
+                    feature_column = all_features.index(f)
+                    feature_cols.append(feature_column) 
+                    
+            for column in feature_cols: # column among relevant feature columns
+               examples_features = examples[:,column] # all values of current feature
+               exs_with_f = []                    # init
+               nbr_of_exs = examples_features.length
+               
+               for i in range(1, nbr_of_exs):
+                   feature_value = examples_features[i]
+                   if feature_value == 1:
+                       exs_with_f.append(example[i])
+                  
+                  val = example_attr_values[i]             # each val
+                   if val in attr_f:
+                       exs_with_attr_f.append[examples[i]]
                     #end
         # finish building node and return it
                 
@@ -61,8 +69,8 @@ def plurality_value(parent_examples):
 # if all elements in example are classified the same, return true
 def has_same_classification(examples, y_symbols):
     index = examples[0].index
-    classification = y_symbols[index]
+    first_classification = y_symbols[index]
     for ex in examples:
-        if y_symbols[ex.index] != classification:
+        if y_symbols[ex.index] != first_classification:
             return False
     return True
