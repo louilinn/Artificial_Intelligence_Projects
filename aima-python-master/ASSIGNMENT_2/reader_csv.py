@@ -2,12 +2,12 @@
 """
 Created on Tue Feb 14 09:56:02 2017
 
-@author: Louise
+@author: Louise, Miriam
 """
 
 
-import arff
-attr_dict = arff.load(open('restaurant_example2.arff', 'r'))
+#import arff
+#attr_dict = arff.load(open('restaurant_example2.arff', 'r'))
 #attr = attr_dict.attributes
 
 import csv
@@ -48,7 +48,7 @@ examples = [0,1,2,3,4,5,6,7,8,9,10,11]
 
 root = dtl.decision_tree_learning_(examples, attributes, None, None, None, features, y, X)
 #(examples, attributes, parent_examples, label, features, classifications, feature_matrix):
-root.printme()
+root.printme('')
         
 #root = Node()
  
